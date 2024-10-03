@@ -165,7 +165,7 @@ router.post("/login", async function (req, res) {
       return res.status(401).send("Invalid email or password.");
     }
     console.log("Password verified");
-
+    console.log(foundUser);
     // Set user info in session
     // req.session.userId = foundUser._id;
     // req.session.userName = foundUser.fname; // Store the user's first name
