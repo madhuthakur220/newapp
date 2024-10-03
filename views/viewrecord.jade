@@ -1,0 +1,52 @@
+extends layout
+
+block navbar
+  .container-fluid
+    // Navbar
+    nav.navbar.navbar-expand-lg.bg-light.text-center.justify-content-center
+      .container.d-flex.justify-content-around
+        a.navbar-brand.fs-2.flex-fill(href='#') Yummy.
+        button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarNav.d-flex.justify-content-center.col.flex-fill
+          ul.navbar-nav
+            li.nav-item
+              a.nav-link(href='/') Home
+            li.nav-item
+              a.nav-link(href='/About') About
+            li.nav-item
+              a.nav-link(href='/Menu') Menu
+            li.nav-item
+              a.nav-link(href='/Gallery') Gallery
+            li.nav-item
+              a.nav-link(href='/Contact') Contact
+        .d-flex.justify-content-center.col.flex-fill
+          a(href='/login', class='btn btn-outline-light my-2 my-sm-0 bg-danger', type='button') Log In
+          a(href='/viewrecord', class='btn btn-outline-light my-2 my-sm-0 bg-danger', type='button') Record
+block content
+  .container.m-5
+  h1.text-center Users Details
+
+  table.table.table-bordered.table-striped.table-hover(style='width: 70%; margin: auto;')
+    thead
+      tr
+        th First Name
+        th Last Name
+        th Email
+        th Edit
+        th Delete
+    tbody
+      if resultdata && resultdata.length > 0
+        each user in resultdata
+          tr
+            td #{user.fname}
+            td #{user.lname}
+            td #{user.email}
+            td
+              a.btn.btn-primary(href="/edit/" + user._id) Edit
+            td
+              a.btn.btn-danger(href="/delete/" + user._id) Delete
+      else
+        tr
+          td(colspan="5") No records found
+

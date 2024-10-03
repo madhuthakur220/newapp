@@ -1,0 +1,77 @@
+extends layout
+
+block content
+  .container-fluid
+    // Navbar
+    nav.navbar.navbar-expand-lg.bg-light.text-center.justify-content-center.w-100
+      .container.d-flex.justify-content-between
+        a.navbar-brand.fs-2.flex-fill(href='/') Yummy.
+        button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarNav
+          ul.navbar-nav
+            li.nav-item
+              a.nav-link(href='/') Home
+            li.nav-item
+              a.nav-link(href='/About') About
+            li.nav-item
+              a.nav-link(href='/Menu') Menu
+            li.nav-item
+              a.nav-link(href='/Gallery') Gallery
+            li.nav-item
+              a.nav-link(href='/Contact') Contact
+        a(href='/login', class='btn btn-outline-light my-2 my-sm-0 bg-danger', type='button') Log In
+        a(href='/viewrecord', class='btn btn-outline-light my-2 my-sm-0 bg-danger', type='button') Record
+            // User Info Section
+            //- if session.userName
+            //-   li.nav-item.dropdown
+            //-     a.nav-link.dropdown-toggle(href='#', role='button', id='userDropdown', data-bs-toggle='dropdown', aria-expanded='false') 
+            //-       | #{session.userName}
+            //-     .dropdown-menu(aria-labelledby='userDropdown')
+            //-       button.dropdown-item(onclick='location.href="/logout"') Log Out
+            //- else
+            //-   li.nav-item
+            //-     button.nav-link(onclick='location.href="/login"') Log In
+
+        //- #user-info
+        //-   span#user-name
+        //-   button#logout-button Log Out
+        //- .d-flex.justify-content-center.col.flex-fill
+        //-   if userName
+        //-     span.text-success Hello, #{userName}!
+        //-     a(href='/logout', class='btn btn-outline-light my-2 my-sm-0 bg-danger', type='button') Log Out
+        //-   else
+        //-     a(href='/login', class='btn btn-outline-light my-2 my-sm-0 bg-danger', type='button') Log In
+        //- a(href='/viewrecord', class='btn btn-outline-light my-2 my-sm-0 bg-danger', type='button') Record
+
+  // content
+  .container
+     .row.justify-content-center.mt-5
+        .col-lg-4.col-md-6.col-sm-8.col-10
+          .border.border-secondary.rounded.p-4.bg-light.shadow-lg
+            .forform
+              h1.text-center Register
+              form(action="/register", method='POST')
+                .mb-3 
+                  label.form-label(for="fname") First Name
+                  input#fname.form-control(type="text", name='fname')
+                .mb-3 
+                  label.form-label(for="lname") Last Name
+                  input#lname.form-control(type="text", name='lname')
+                .mb-3 
+                  label.form-label(for="email") Email
+                  input#email.form-control(type="email", name='email')
+                  //- #emailhelp.form-text We&apos; ll never share your email with anyone else.
+                .mb-3 
+                  label.form-label(for="password") password
+                  input#password.form-control(type="password", name='password')
+                //- .col-auto 
+                //-   span#passwordHelpInline.form-text 
+                //-     | Must be 8-20 characters long.
+                .mb-3.form-check 
+                  input#exampleCheck1.form-check-input(type="checkbox") 
+                  label.form-check-lable.checkclass(for="exampleCheck1") Check me output 
+                .mb-3
+                  button.btn.btn-outline-light.py-2.px-5.my-2.my-sm-0.bg-danger.w-100(type="submit",onclick="register") Sign-Up
+
+
